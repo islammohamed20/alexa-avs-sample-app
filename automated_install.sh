@@ -22,15 +22,15 @@ ClientSecret=YOUR_CLIENT_SECRET_HERE
 #-------------------------------------------------------
 
 # Your Country. Must be 2 characters!
-Country='US'
+Country='EG'
 # Your state. Must be 2 or more characters.
-State='WA'
+State='EG'
 # Your city. Cannot be blank.
-City='SEATTLE'
+City='ASYUT'
 # Your organization name/company name. Cannot be blank.
 Organization='AVS_USER'
 # Your device serial number. Cannot be blank, but can be any combination of characters.
-DeviceSerialNumber='123456789'
+DeviceSerialNumber='123456'
 # Your KeyStorePassword. We recommend leaving this blank for testing.
 KeyStorePassword=''
 
@@ -423,7 +423,7 @@ echo ""
 echo "======================================================="
 echo ""
 echo ""
-select_option Locale "en-US" "en-GB" "de-DE" "en-CA" "en-IN" "ja-JP" "en-AU"
+select_option Locale "en-US" "en-GB" "de-DE" "en-CA" "en-IN" "ja-JP" "en-AU" "ar-EG"
 
 # Force audio to correct output
 clear
@@ -498,10 +498,6 @@ sudo apt-get install -y git
 echo "========== Getting the code for Kitt-Ai ==========="
 cd $Kitt_Ai_Loc
 git clone https://github.com/Kitt-AI/snowboy.git
-
-echo "========== Getting the code for Sensory ==========="
-cd $Sensory_Loc
-git clone https://github.com/Sensory/alexa-rpi.git
 
 cd $Origin
 
