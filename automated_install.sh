@@ -296,7 +296,7 @@ get_alpn_version()
   
   Alpn_Version=""
   if [ "$Java_Major_Version" = "1.8.0" ] && [ "$Java_Minor_Version" -gt 59 ]; then
-    if [ "$Java_Minor_Version" -gt 160 ]; then
+    if [ "$Java_Minor_Version" -gt 162 ]; then
       Alpn_Version="8.1.12.v20180117"
     elif [ "$Java_Minor_Version" -gt 120 ]; then
       Alpn_Version="8.1.11.v20170118"
@@ -528,10 +528,12 @@ fi
 sudo ldconfig
 
 echo "========== Installing NodeJS =========="
-sudo apt-get install -y nodejs npm build-essential
-sudo ln -s /usr/bin/nodejs /usr/bin/node
-node -v
+wget https://unofficial-builds.nodejs.org/download/release/v17.0.0/node-v17.0.0-linux-armv6l.tar.gz
+tar -xzf node-v17.0.0-linux-armv6l.tar.gz
+cd node-v17.0.0-linux-armv6l
+sudo cp -R * /usr/local/
 sudo ldconfig
+node -v & npm -v
 
 echo "========== Installing Maven =========="
 sudo apt-get install -y maven
@@ -587,6 +589,15 @@ fi
 printf "pcm.!default {\n  type asym\n   playback.pcm {\n     type plug\n     slave.pcm \"hw:0,0\"\n   }\n   capture.pcm {\n     type plug\n     slave.pcm \"hw:1,0\"\n   }\n}" >> /home/$User/.asoundrc
 
 echo "========== Installing CMake =========="
+sudo apt install build-essential gcc libssl-dev -y
+wget https://github.com/Kitware/CMake/releases/download/v3.23.0/cmake-3.23.0.tar.gz
+tar xvf cmake-3.23.0.tar.gz
+cd cmake-3.23.0
+./bootstrap
+make
+sudo make install
+cmake --version
+
 sudo apt-get install -y cmake
 sudo ldconfig
 
@@ -624,11 +635,6 @@ if [ "$Wake_Word_Detection_Enabled" = "true" ]; then
 
   sudo ln -s /usr/lib/atlas-base/atlas/libblas.so.3 $External_Loc/lib/libblas.so.3
 
-  $Sensory_Loc/alexa-rpi/bin/sdk-license file $Sensory_Loc/alexa-rpi/config/license-key.txt $Sensory_Loc/alexa-rpi/lib/libsnsr.a $Sensory_Loc/alexa-rpi/models/spot-alexa-rpi-20500.snsr $Sensory_Loc/alexa-rpi/models/spot-alexa-rpi-21000.snsr $Sensory_Loc/alexa-rpi/models/spot-alexa-rpi-31000.snsr
-  cp $Sensory_Loc/alexa-rpi/include/snsr.h $External_Loc/include/snsr.h
-  cp $Sensory_Loc/alexa-rpi/lib/libsnsr.a $External_Loc/lib/libsnsr.a
-  cp $Sensory_Loc/alexa-rpi/models/spot-alexa-rpi-31000.snsr $External_Loc/resources/spot-alexa-rpi.snsr
-
   mkdir $Wake_Word_Agent_Loc/tst/ext
   cp -R $External_Loc/* $Wake_Word_Agent_Loc/tst/ext
   cd $Origin
@@ -660,7 +666,6 @@ echo "Run the companion service: cd $Companion_Service_Loc && npm start"
 echo "Run the AVS Java Client: cd $Java_Client_Loc && mvn exec:exec"
 if [ "$Wake_Word_Detection_Enabled" = "true" ]; then
   echo "Run the wake word agent: "
-  echo "  Sensory: cd $Wake_Word_Agent_Loc/src && ./wakeWordAgent -e sensory"
   echo "  KITT_AI: cd $Wake_Word_Agent_Loc/src && ./wakeWordAgent -e kitt_ai"
   echo "  GPIO: PLEASE NOTE -- If using this option, run the wake word agent as sudo:"
   echo "  cd $Wake_Word_Agent_Loc/src && sudo ./wakeWordAgent -e gpio"
