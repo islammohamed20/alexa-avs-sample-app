@@ -329,7 +329,7 @@ clear
 echo "====== AVS + Raspberry Pi Licenses and Agreement ======"
 echo ""
 echo ""
-echo "This code base is dependent on several external libraries and virtual environments like Kitt-Ai, Sensory, ALSA, Atlas, Portaudio, VLC, NodeJS, npm, Oracle JDK, OpenSSL, Maven & CMake."
+echo "This code base is dependent on several external libraries and virtual environments like Kitt-Ai, ALSA, Atlas, Portaudio, VLC, NodeJS, npm, Oracle JDK, OpenSSL, Maven & CMake."
 echo ""
 echo "Please read the document \"Installer_Licenses.txt\" from the sample app repository and the corresponding licenses of the above."
 echo ""
@@ -403,12 +403,10 @@ Java_Client_Loc=$Samples_Loc/javaclient
 Wake_Word_Agent_Loc=$Samples_Loc/wakeWordAgent
 Companion_Service_Loc=$Samples_Loc/companionService
 Kitt_Ai_Loc=$Wake_Word_Agent_Loc/kitt_ai
-Sensory_Loc=$Wake_Word_Agent_Loc/sensory
 External_Loc=$Wake_Word_Agent_Loc/ext
-Locale="en-US"
+Locale="ar-EG"
 
 mkdir $Kitt_Ai_Loc
-mkdir $Sensory_Loc
 mkdir $External_Loc
 
 
@@ -501,7 +499,7 @@ git clone https://github.com/Kitt-AI/snowboy.git
 
 cd $Origin
 
-echo "========== Installing Libraries for Kitt-Ai and Sensory: ALSA, Atlas ==========="
+echo "========== Installing Libraries for Kitt-Ai: ALSA, Atlas ==========="
 sudo apt-get -y install libasound2-dev
 sudo apt-get -y install libatlas-base-dev
 sudo ldconfig
