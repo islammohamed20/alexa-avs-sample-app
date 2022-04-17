@@ -28,38 +28,6 @@ ___
 
 ---
 
-##  0 - Setting up the Raspberry Pi
-![](assets/raspberry-pi-b-plus3info.jpg)
-
-1. Insert the micro SD card with NOOBS preinstalled into the micro SD card slot on your Raspberry Pi. 
-![](assets/rpi-3.jpg)
-2. Plug in the USB 2.0 Mini Microphone, and the (optional) WiFi Wireless Adapter.
-3. Plug in your USB keyboard and mouse. 
-4. Connect your monitor using the HDMI port. 
-
-![](assets/rpi-2.jpg)
-![](assets/rpi-4.jpg)
-
-
-##  1 - Booting up the Raspberry Pi
-
-1. Now plug in the USB power cable to your Pi.
-2. Your Raspberry Pi will boot, and a window will appear with a list of different operating systems that you can install. 
-3. Tick the box next to **Raspbian** and click on **Install**.
-
-	![](assets/noobs_setup.png)
-
-4. Raspbian will then run through its installation process. *Note: this can take a while*.
-5. When the installation process has completed, the Raspberry Pi configuration menu (raspi-config) will load. Here you can set the time and date for your region and enable a Raspberry Pi camera board, or even create users. You can exit this menu by using Tab on your keyboard to move to **Finish**.
-	![](assets/raspi-config.jpg)
-6. Once rebooted, login to your Raspberry Pi. The default login for Raspbian is username **pi** with the password **raspberry**
-
-**NOTE**: To load the graphical user interface at any time type **startx** into the command line. 
-
-More info: [raspberrypi.org](https://www.raspberrypi.org/help/noobs-setup/)
-
-___
-
 ## 2 - Installing utilities & dependencies
 
 **NOTE**: You will be using the **Terminal** utility on the Raspberry Pi to install the utilities you need for this Alexa Voice Service walkthrough. Terminal comes preinstalled on the Raspberry Pi, and you can get to it from the Desktop. You can learn more about Terminal [here](https://www.raspberrypi.org/documentation/usage/terminal/).
