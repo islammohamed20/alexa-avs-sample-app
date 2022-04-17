@@ -587,17 +587,10 @@ fi
 printf "pcm.!default {\n  type asym\n   playback.pcm {\n     type plug\n     slave.pcm \"hw:0,0\"\n   }\n   capture.pcm {\n     type plug\n     slave.pcm \"hw:1,0\"\n   }\n}" >> /home/$User/.asoundrc
 
 echo "========== Installing CMake =========="
-sudo apt install build-essential gcc libssl-dev -y
-wget https://github.com/Kitware/CMake/releases/download/v3.23.0/cmake-3.23.0.tar.gz
-tar xvf cmake-3.23.0.tar.gz
-cd cmake-3.23.0
-./bootstrap
-make
-sudo make install
-cmake --version
-
+sudo apt update
 sudo apt-get install -y cmake
 sudo ldconfig
+cmake --version
 
 echo "========== Installing Java Client =========="
 if [ -f $Java_Client_Loc/pom.xml ]; then
